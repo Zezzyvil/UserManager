@@ -3,7 +3,7 @@
 echo "Setup script running ...." 
 
 LOGFILE=/var/log/UserManagerAppSetup.log
-APP_ENV=webapp/.env.txt
+APP_ENV=webapp/.env
 
 # detect Operating System
 lsb_dist=$( echo "$(. /etc/os-release && echo "$ID")" )
@@ -79,13 +79,15 @@ install_package(){
 {
 cat > $APP_ENV << XEOF
 PORT=3000
-DB_URL='mongodb://db@localhost:27017/UserManagerApp'
+DB_URL='mongodb://db:27017/userManagerApp'
 XEOF
 }||{
 	echo "Creating $APP_ENV [failed]: ensure webapp folder exists and is writeable"
 	echo "Creating $APP_ENV [failed]" >> $LOGFILE
 	exit 1
 }
+
+sudo chmod 666 $APP_ENV
 
 #setup docker and docker-compose
 docker_setup
