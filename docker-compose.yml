@@ -1,0 +1,15 @@
+db:
+  image: "mongo:3.0"
+  ports:
+    - "27017:27017"
+  restart: always
+web:
+  build: .
+  volumes:
+    - ./webapp:/app
+  ports:
+    - "3000:3000"
+  links:
+    - db
+  command: npm start
+
