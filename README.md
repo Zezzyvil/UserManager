@@ -1,5 +1,18 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+
+# Dockerization
+
+To run this Dockerized version of the application:
+From your terminal (or Command Prompt on Windows OS), change directory into this project directory. e.g. `cd UserManager`
+- On Linux systems, run the `setup.sh`. it setsup docker and docker-compose, builds the application and starts it.
+- On other platforms, install docker and docker-compose, and run `docker-compose -p myApp up`
+
+* Skeep to `API Documentation` section below for app features. 
+
+#
+#
+
 # User Manager
 
 This repository contains a simple demo API built with NodeJS.
