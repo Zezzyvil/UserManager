@@ -41,9 +41,14 @@ docker_setup(){
 
     if ! command_exists docker
     	then
+    	{
     	   wget -qO- https://get.docker.com/ | sh
+    	}||{
+    		echo "Platform not supported by docker installation script. Manually install docker and then run this script again"
+    		exit 1
+    	}
     	else
-    		echo "docker installed at $(which docker)"
+    		echo "docker installed at $(which docker)" >> $LOGFILE
     fi
 
     #install docker compose if not installed
